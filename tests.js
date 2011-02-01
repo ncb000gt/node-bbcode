@@ -241,6 +241,22 @@ module.exports = testCase(
                 assert.done();
             });
         },
+        'test img with =': function(assert) {
+            assert.expect(1);
+            var bbcode = new bbcode_lib({});
+            bbcode.parse('[img=http://example.com/img.png][/img]', function(data) {
+                assert.equals('<img src="http://example.com/img.png" />', data);
+                assert.done();
+            });
+        },
+        'test img as content': function(assert) {
+            assert.expect(1);
+            var bbcode = new bbcode_lib({});
+            bbcode.parse('[img]http://example.com/img.png[/img]', function(data) {
+                assert.equals('<img src="http://example.com/img.png" />', data);
+                assert.done();
+            });
+        },
 
         'test quote': function(assert) {
             assert.expect(1);
