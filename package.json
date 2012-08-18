@@ -2,9 +2,8 @@
   "name": "bbcode",
   "description": "A BBCode Parser for NodeJS",
   "main": "./lib/bbcode",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "author": "Nick Campbell (http://github.com/ncb000gt)",
-  "engines": { "node": ">= 0.1.100" },
   "repository": {
         "type": "git",
         "url": "http://github.com/ncb000gt/node-bbcode.git"
@@ -15,7 +14,7 @@
      }
    ],
    "bugs": {
-     "web" : "http://github.com/ncb000gt/node-bbcode/issues"
+     "url" : "http://github.com/ncb000gt/node-bbcode/issues"
    },
    "dependencies": {
      "nodeunit": ">=0.3.1"

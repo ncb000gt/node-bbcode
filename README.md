@@ -7,9 +7,13 @@ This project aims to provide a robust BBCode Parser for NodeJS. Originally based
 Usage
 =============
 
+Install with NPM.
 
    npm install bbcode  
-   var bbcode = new (require('bbcode'))({});  
+
+Write some code.
+   
+   var bbcode = require('bbcode');  
    bbcode.parse('[b]text[/b]', function(content) { ... }  
 
 
