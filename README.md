@@ -1,6 +1,8 @@
 BBCode Parser for NodeJS
 =============
 
+[![Build Status](https://secure.travis-ci.org/ncb000gt/node-bbcode.png)](http://travis-ci.org/#!/ncb000gt/node-bbcode) 
+
 This project aims to provide a robust BBCode Parser for NodeJS. Originally based on work by http://www.stonesteps.ca.
 
 
