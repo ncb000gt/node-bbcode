@@ -22,7 +22,6 @@ Write some code.
 TODO
 ==============
 
-* lists
 * spoiler boxes
 * font face
 
