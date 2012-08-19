@@ -17,6 +17,9 @@
      "url" : "http://github.com/ncb000gt/node-bbcode/issues"
    },
    "dependencies": {
+     "underscore": "*"
+   },
+   "devDependencies": {
      "mocha": "1.3.2",
      "should": "1.1.0"
    }

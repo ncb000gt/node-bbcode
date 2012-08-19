@@ -94,5 +94,51 @@ describe('bcrypt', function() {
         parse.should.equal('<b>test</b>');
       });
     });
+
+    describe('should parse [list] and [*] children to <ol> and <li> respectively -', function() {
+      it('no children', function() {
+        bbcode.parse('[list][/list]', function(parse) {
+          parse.should.equal('<ol></ol>');
+        });
+      });
+
+      it('one on a single line', function() {
+        bbcode.parse('[list][*]one[/list]', function(parse) {
+          parse.should.equal('<ol><li>one</li></ol>');
+        });
+      });
+
+      it('two on a single line', function() {
+        bbcode.parse('[list][*]one[*]two[/list]', function(parse) {
+          parse.should.equal('<ol><li>one</li><li>two</li></ol>');
+        });
+      });
+    });
+
+    describe('should parse [ulist] and [*] children to <ul> and <li> respectively -', function() {
+      it('no children', function() {
+        bbcode.parse('[ulist][/ulist]', function(parse) {
+          parse.should.equal('<ul></ul>');
+        });
+      });
+
+      it('one on a single line', function() {
+        bbcode.parse('[ulist][*]one[/ulist]', function(parse) {
+          parse.should.equal('<ul><li>one</li></ul>');
+        });
+      });
+
+      it('two on a single line', function() {
+        bbcode.parse('[ulist][*]one[*]two[/ulist]', function(parse) {
+          parse.should.equal('<ul><li>one</li><li>two</li></ul>');
+        });
+      });
+    });
+
+    it('should parse inner tags [b][i][u] to <b><i><u>', function() {
+      bbcode.parse('[b][i][u]Hai[/u][/i][/b]', function(parse) {
+        parse.should.equal('<b><i><u>Hai</u></i></b>');
+      });
+    });
   });
 });
