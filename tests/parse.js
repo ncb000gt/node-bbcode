@@ -140,5 +140,10 @@ describe('bcrypt', function() {
         parse.should.equal('<b><i><u>Hai</u></i></b>');
       });
     });
+
+    it('should parse and return rather than callback', function() {
+      var parse = bbcode.parse('[b][i][u]Hai[/u][/i][/b]');
+      parse.should.equal('<b><i><u>Hai</u></i></b>');
+    });
   });
 });
