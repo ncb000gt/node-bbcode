@@ -57,15 +57,59 @@ describe('bcrypt', function() {
       });
     });
 
-    it('should parse [url=<url>] to <a href=<url>>', function() {
-      bbcode.parse('[url=http://example.com]url[/url]', function(parse) {
-        parse.should.equal('<a href="http://example.com">url</a>');
+    describe('should parse [url] and [link]', function() {
+      it('should parse [url=<url>] to <a href=<url>>', function() {
+        bbcode.parse('[url=http://example.com]url[/url]', function(parse) {
+          parse.should.equal('<a href="http://example.com">url</a>');
+        });
+      });
+
+      it('should parse [url="<url>"] to <a href=<url>>', function() {
+        bbcode.parse('[url="http://example.com"]url[/url]', function(parse) {
+          parse.should.equal('<a href="http://example.com">url</a>');
+        });
+      });
+
+      it('should parse [url=\'<url>\'] to <a href=<url>>', function() {
+        bbcode.parse('[url=\'http://example.com\']url[/url]', function(parse) {
+          parse.should.equal('<a href="http://example.com">url</a>');
+        });
+      });
+
+      it('should parse [link=<url>]test[/link]', function() {
+        bbcode.parse('[link=http://example.com]url[/link]', function(parse) {
+          parse.should.equal('<a href="http://example.com">url</a>');
+        });
+      });
+
+      it('should parse [link="<url>"]test[/link]', function() {
+        bbcode.parse('[link="http://example.com"]url[/link]', function(parse) {
+          parse.should.equal('<a href="http://example.com">url</a>');
+        });
+      });
+
+      it('should parse [link=\'<url>\']test[/link]', function() {
+        bbcode.parse('[link=\'http://example.com\']url[/link]', function(parse) {
+          parse.should.equal('<a href="http://example.com">url</a>');
+        });
       });
     });
 
     describe('should parse [img]', function() {
       it('as attribute - [img=<img>] to <img src=<img>>', function() {
         bbcode.parse('[img=http://example.com/img.png][/img]', function(parse) {
+          parse.should.equal('<img src="http://example.com/img.png" />');
+        });
+      });
+
+      it('as attribute with quotes - [img="<img>"] to <img src=<img>>', function() {
+        bbcode.parse('[img="http://example.com/img.png"][/img]', function(parse) {
+          parse.should.equal('<img src="http://example.com/img.png" />');
+        });
+      });
+
+      it('as attribute with single quotes - [img=\'<img>\'] to <img src=<img>>', function() {
+        bbcode.parse('[img=\'http://example.com/img.png\'][/img]', function(parse) {
           parse.should.equal('<img src="http://example.com/img.png" />');
         });
       });
