@@ -22,5 +22,8 @@
    "devDependencies": {
      "mocha": "1.3.2",
      "should": "1.1.0"
+   },
+   "scripts": {
+      "test": "mocha --require should ./tests/parse"
    }
 }

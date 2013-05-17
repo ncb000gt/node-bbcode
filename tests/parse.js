@@ -4,15 +4,15 @@ require('should');
 
 describe('bcrypt', function() {
   describe('#parse', function() {
-    it('should parse [b] to <b>', function() {
+    it('should parse [b] to <strong>', function() {
       bbcode.parse('[b]Bold[/b]', function(parse) {
-        parse.should.equal('<b>Bold</b>');
+        parse.should.equal('<strong>Bold</strong>');
       });
     });
 
-    it('should parse [i] to <i>', function() {
+    it('should parse [i] to <em>', function() {
       bbcode.parse('[i]italics[/i]', function(parse) {
-        parse.should.equal('<i>italics</i>');
+        parse.should.equal('<em>italics</em>');
       });
     });
 
@@ -21,7 +21,7 @@ describe('bcrypt', function() {
         parse.should.equal('<u>underline</u>');
       });
     });
-    
+
     it('should parse [samp] to <samp>', function() {
       bbcode.parse('[samp]samp[/samp]', function(parse) {
         parse.should.equal('<samp>samp</samp>');
@@ -50,7 +50,7 @@ describe('bcrypt', function() {
         parse.should.equal('<span style="font-size: 1.5em">size</span>');
       });
     });
-  
+
     it('should parse [s] to <span style="text-decoration: line-through"', function() {
       bbcode.parse('[s]strikethrough[/s]', function(parse) {
         parse.should.equal('<span style="text-decoration: line-through">strikethrough</span>');
@@ -60,37 +60,37 @@ describe('bcrypt', function() {
     describe('should parse [url] and [link]', function() {
       it('should parse [url=<url>] to <a href=<url>>', function() {
         bbcode.parse('[url=http://example.com]url[/url]', function(parse) {
-          parse.should.equal('<a href="http://example.com">url</a>');
+          parse.should.equal('<a target="_blank" href="http://example.com">url</a>');
         });
       });
 
       it('should parse [url="<url>"] to <a href=<url>>', function() {
         bbcode.parse('[url="http://example.com"]url[/url]', function(parse) {
-          parse.should.equal('<a href="http://example.com">url</a>');
+          parse.should.equal('<a target="_blank" href="http://example.com">url</a>');
         });
       });
 
       it('should parse [url=\'<url>\'] to <a href=<url>>', function() {
         bbcode.parse('[url=\'http://example.com\']url[/url]', function(parse) {
-          parse.should.equal('<a href="http://example.com">url</a>');
+          parse.should.equal('<a target="_blank" href="http://example.com">url</a>');
         });
       });
 
       it('should parse [link=<url>]test[/link]', function() {
         bbcode.parse('[link=http://example.com]url[/link]', function(parse) {
-          parse.should.equal('<a href="http://example.com">url</a>');
+          parse.should.equal('<a target="_blank" href="http://example.com">url</a>');
         });
       });
 
       it('should parse [link="<url>"]test[/link]', function() {
         bbcode.parse('[link="http://example.com"]url[/link]', function(parse) {
-          parse.should.equal('<a href="http://example.com">url</a>');
+          parse.should.equal('<a target="_blank" href="http://example.com">url</a>');
         });
       });
 
       it('should parse [link=\'<url>\']test[/link]', function() {
         bbcode.parse('[link=\'http://example.com\']url[/link]', function(parse) {
-          parse.should.equal('<a href="http://example.com">url</a>');
+          parse.should.equal('<a target="_blank" href="http://example.com">url</a>');
         });
       });
     });
@@ -135,7 +135,7 @@ describe('bcrypt', function() {
 
     it('should try to fix broken markup', function() {
       bbcode.parse('[b]test', function(parse) {
-        parse.should.equal('<b>test</b>');
+        parse.should.equal('<strong>test</strong>');
       });
     });
 
@@ -179,15 +179,15 @@ describe('bcrypt', function() {
       });
     });
 
-    it('should parse inner tags [b][i][u] to <b><i><u>', function() {
+    it('should parse inner tags [b][i][u] to <strong><em><u>', function() {
       bbcode.parse('[b][i][u]Hai[/u][/i][/b]', function(parse) {
-        parse.should.equal('<b><i><u>Hai</u></i></b>');
+        parse.should.equal('<strong><em><u>Hai</u></em></strong>');
       });
     });
 
     it('should parse and return rather than callback', function() {
       var parse = bbcode.parse('[b][i][u]Hai[/u][/i][/b]');
-      parse.should.equal('<b><i><u>Hai</u></i></b>');
+      parse.should.equal('<strong><em><u>Hai</u></em></strong>');
     });
   });
 });
