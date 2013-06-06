@@ -189,5 +189,23 @@ describe('bcrypt', function() {
       var parse = bbcode.parse('[b][i][u]Hai[/u][/i][/b]');
       parse.should.equal('<strong><em><u>Hai</u></em></strong>');
     });
+
+    describe('should parse uppercase tags properly - ', function() {
+      it('should parse uppercase [I] to <em>', function() {
+        bbcode.parse('[I]italics[/I]', function(parse) {
+          parse.should.equal('<em>italics</em>');
+        });
+      });
+      it('should parse uppercase [IMG] to <img>', function() {
+        bbcode.parse('[IMG]http://example.com/img.png[/IMG]', function(parse) {
+          parse.should.equal('<img src="http://example.com/img.png" />');
+        });
+      });
+      it('should parse mixed case [IMG][/img] to <img>', function() {
+        bbcode.parse('[Img]http://example.com/img.png[/img]', function(parse) {
+          parse.should.equal('<img src="http://example.com/img.png" />');
+        });
+      });
+    });
   });
 });
