@@ -34,6 +34,12 @@ describe('bcrypt', function() {
       });
     });
 
+    it('should parse [center] to <center>', function() {
+      bbcode.parse('[center]Center[/center]', function(parse) {
+        parse.should.equal('<center>Center</center>');
+      });
+    });
+
     it('should parse [color] to <span style="color:<color>"> for all colors', function() {
       var colors = ['black', 'silver', 'gray', 'maroon', 'white', 'red', 'purple', 'fuchsia', 'green', 'lime', 'olive', 'yellow', 'navy', 'blue', 'teal', 'aqua', '#fff', '#ffffff', '#ff34ff'];
 
