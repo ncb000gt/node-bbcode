@@ -2,7 +2,7 @@
   "name": "bbcode",
   "description": "A BBCode Parser for NodeJS",
   "main": "./lib/bbcode",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Nick Campbell (http://github.com/ncb000gt)",
   "repository": {
         "type": "git",
