@@ -139,6 +139,12 @@ describe('bcrypt', function() {
       });
     });
 
+    it('should parse [quote] as <blockquote>', function() {
+      bbcode.parse('[quote=person]quoted[/quote]', function(parse) {
+        parse.should.equal('<blockquote cite="person">quoted</blockquote>');
+      });
+    });
+
     it('should try to fix broken markup', function() {
       bbcode.parse('[b]test', function(parse) {
         parse.should.equal('<strong>test</strong>');
