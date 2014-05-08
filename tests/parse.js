@@ -2,7 +2,7 @@ var bbcode = require('../lib/bbcode');
 
 require('should');
 
-describe('bcrypt', function() {
+describe('bbcode', function() {
   describe('#parse', function() {
     it('should parse [b] to <strong>', function() {
       bbcode.parse('[b]Bold[/b]', function(parse) {
@@ -97,6 +97,24 @@ describe('bcrypt', function() {
       it('should parse [link=\'<url>\']test[/link]', function() {
         bbcode.parse('[link=\'http://example.com\']url[/link]', function(parse) {
           parse.should.equal('<a target="_blank" href="http://example.com">url</a>');
+        });
+      });
+
+      it('should parse [url]<url#hash>[/url] to <a href=<url#hash>>', function() {
+        bbcode.parse('[url]http://example.com/#hash[/url]', function(parse) {
+          parse.should.equal('<a target="_blank" href="http://example.com/#hash">http://example.com/#hash</a>');
+        });
+      });
+
+      it('should parse [url=<url#hash>] to <a href=<url#hash>>', function() {
+        bbcode.parse('[url=http://example.com/#hash]url[/url]', function(parse) {
+          parse.should.equal('<a target="_blank" href="http://example.com/#hash">url</a>');
+        });
+      });
+
+      it('should parse [url="<url#hash>"] to <a href=<url#hash>>', function() {
+        bbcode.parse('[url="http://example.com/#hash"]url[/url]', function(parse) {
+          parse.should.equal('<a target="_blank" href="http://example.com/#hash">url</a>');
         });
       });
     });
